@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4440c4a0bb78ab4dac32f42ed897a5a, type: 3}
+  m_Name: Helmet
+  m_EditorClassIdentifier: 
+  ID: 3
+  itemName: Helmet
+  description: For the Head
+  icon: {fileID: 21300000, guid: 1aa8d4e1c6a8e934595f9ab61f2bf8aa, type: 3}
+  quantity: 0
+  pickupPrefab: {fileID: 5545403294663529157, guid: 00e9281639e7bbd469ae702f3260b7d5, type: 3}
+  inventoryItem: {fileID: 3898684451093392813, guid: 53b99a7ca50c4d643b83aeb8ef2a24e3, type: 3}

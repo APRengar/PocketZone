@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4440c4a0bb78ab4dac32f42ed897a5a, type: 3}
+  m_Name: Armor
+  m_EditorClassIdentifier: 
+  ID: 1
+  itemName: Chest
+  description: For Body
+  icon: {fileID: 21300000, guid: d811afb0d42fed140806f31df436fbda, type: 3}
+  quantity: 0
+  pickupPrefab: {fileID: 1231971435293438347, guid: b0bc7acefea7cee4baef0f2578d2851e, type: 3}
+  inventoryItem: {fileID: 2443052721588830507, guid: a3e22dc85d2e60c45a39261786ca02e9, type: 3}

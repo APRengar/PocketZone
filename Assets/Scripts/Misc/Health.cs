@@ -7,9 +7,12 @@ public class Health : MonoBehaviour
 {
     public event Action<int> OnDamageTaken;
     public event Action playerDeing;
-    
+
     [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    [Header("ReadOnly")]
+    [SerializeField] private int currentHealth;
+
+    private bool dead = false;
 
     private void Awake()
     {
@@ -18,20 +21,28 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        if (dead)
+            return;
 
+        currentHealth -= damage;
         OnDamageTaken?.Invoke(damage);
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Player is dead");
+            dead = true;
             playerDeing?.Invoke();
+            Debug.Log(gameObject.name +" is dead");
         }
     }
-    public void SetMaxHealth(int healths)
+
+    public void SetupSlider(out int maxHealth, out int currentHealth)
     {
-        maxHealth = healths;
-        
+        maxHealth = this.maxHealth;
+        currentHealth = this.currentHealth;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
     [SerializeField] private Health health;
+    [SerializeField] TextMeshProUGUI hpText;
     private Slider healthsBar;
 
-    public void SetupBar(int minHP, int maxHP, int currentHP)
+
+    private void Awake() 
     {
-        healthsBar.minValue = minHP;
+        healthsBar = GetComponentInChildren<Slider>();
+    }
+
+    private void Start() 
+    {
+        SetupBar();
+    }
+
+    public void SetupBar()
+    {
+        int maxHP;
+        int currHP;
+        health.SetupSlider(out maxHP, out currHP);
         healthsBar.maxValue = maxHP;
-        healthsBar.value = currentHP;
+        healthsBar.value = currHP;
+        hpText.text = currHP.ToString();
     }
 
     private void OnEnable() 
@@ -30,12 +46,12 @@ public class HPBar : MonoBehaviour
         }
     }
 
-
     void UpdateHealthBar(int damageTaken)
     {
         if (health != null)
         {
-            healthsBar.value = -damageTaken;
+            healthsBar.value -= damageTaken;
+            hpText.text = healthsBar.value.ToString();
             if (healthsBar.value < 0)
             {
                 healthsBar.value = 0;

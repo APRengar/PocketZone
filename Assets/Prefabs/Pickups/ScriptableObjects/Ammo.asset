@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4440c4a0bb78ab4dac32f42ed897a5a, type: 3}
+  m_Name: Ammo
+  m_EditorClassIdentifier: 
+  itemName: Ammo
+  description: 'Pistol/Rifle Ammo '
+  icon: {fileID: 250238466, guid: d45f0cae013abb84688afe6e4bc52845, type: 3}
+  quantity: 0
+  pickupPrefab: {fileID: 7479799786491992844, guid: f19330cf531f5264680b2d73eefcc613, type: 3}
+  inventoryItem: {fileID: 7124883612079837952, guid: c74936403712b6041ac3c39f0df5821a, type: 3}

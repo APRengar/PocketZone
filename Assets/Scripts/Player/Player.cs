@@ -1,35 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private IWeapon currentWeapon;
+    public static Player Instance { get; private set; }
 
-    private PlayerController playerController;
     private PlayerPartsRandomiser skinRandomiser;
+    private Health myHealths;
+    [SerializeField] public Transform defaultSpawnPosition;
 
-    private void Start() 
+    private void Awake() 
     {
-        playerController = GetComponent<PlayerController>();
-        skinRandomiser = GetComponent<PlayerPartsRandomiser>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire1")) // ЛКМ или аналогичная кнопка
+        skinRandomiser = GetComponentInChildren<PlayerPartsRandomiser>();
+        myHealths = GetComponentInChildren<Health>();
+        
+        if (Instance == null)
         {
-            currentWeapon?.Attack();
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    public void EquipWeapon(IWeapon weapon)
+    private void Start() 
     {
-        currentWeapon = weapon;
+        skinRandomiser.RandomizeParts();
+        transform.position = SaveSystem.LoadPlayerPosition();
     }
-    
-    public void EquipNextWeapon()
-    {
 
+    public void SavePlayerPosition()
+    {
+        SaveSystem.SavePlayerPosition(transform.position);
+    }
+    public void LoadPlayerPosition()
+    {
+        if (SaveSystem.LoadPlayerPosition() == null)
+            return;
+        transform.position = SaveSystem.LoadPlayerPosition();
     }
 }

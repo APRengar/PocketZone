@@ -19,9 +19,9 @@ public class UICanvasControllerInput : MonoBehaviour
         inventory.GetComponent<Inventory>().ToggleVisibility();
     }
 
-    public void VirtualShootInput(bool virtualShootState)
+    public void VirtualShootInput()
     {
-        inputs.isShoot = virtualShootState;
+        inputs.isShoot = !inputs.isShoot;
     }
 
     public void ChangeTarget()

@@ -35,18 +35,16 @@ public class PlayerController : MonoBehaviour
         {
             Shooting();
         }
-        
     }
 
     void FixedUpdate()
     {
-        // Применение движения
         transform.Translate(movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     void Shooting()
     {
-        weaponControler.ShootAtTheTarget(); 
+        weaponControler.ShootAtTheTarget();
     }
 
     public WeaponController GetWeaponController()
