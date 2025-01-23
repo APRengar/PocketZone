@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +21,9 @@ public class WeaponController : MonoBehaviour
     private void Start() 
     {
         if (currentWeapon != null & !weapons.Contains(currentWeapon))
+        {
             weapons.Add(currentWeapon);
+        }
     }
 
     private void FixedUpdate() 
@@ -50,8 +50,6 @@ public class WeaponController : MonoBehaviour
 
     private void Aim()
     {
-        
-
         // If there is no enemies in the list - target=null, weapon aiming=default
         if (enemies.Count < 1)
         {

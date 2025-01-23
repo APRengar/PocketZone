@@ -20,9 +20,7 @@ public class Item : ScriptableObject
     public Sprite Icon => icon;
     public int Quantity => quantity;
 
-    /// <summary>
-    /// Drops the item into the world at the specified position.
-    /// </summary>
+    // Drops the item into the world at the specified position.
     public void DropItem(Vector3 position)
     {
         if (pickupPrefab != null)

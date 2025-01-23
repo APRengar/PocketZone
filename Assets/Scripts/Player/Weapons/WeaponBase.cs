@@ -19,7 +19,9 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         if (Inventory.Instance.CheckAmmoQuantity() > 0)
             StartCoroutine(AttackCooldown());
         else
+        {
             Debug.Log("Not Enought Ammo!");
+        }
     }
 
     protected IEnumerator AttackCooldown()

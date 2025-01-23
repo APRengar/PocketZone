@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPartsRandomiser : MonoBehaviour
@@ -22,7 +20,6 @@ public class PlayerPartsRandomiser : MonoBehaviour
         int bodyID = Random.Range(0, randomBody.Length);
         int legsID = Random.Range(0, randomLegs.Length);
         int armsID = Random.Range(0, randomArms.Length);
-
 
         head.sprite = randomHead[headID];
         body.sprite = randomBody[bodyID];

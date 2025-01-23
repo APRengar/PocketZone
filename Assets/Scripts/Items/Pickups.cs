@@ -9,7 +9,6 @@ public class Pickups : MonoBehaviour
     {
         item = droppedItem;
     }
-
     public Item PickupItem()
     {
         return item;

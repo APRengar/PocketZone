@@ -3,34 +3,30 @@ using Pathfinding;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private Transform enemyBodyTarget;
     public GameObject Selector;
-    [SerializeField] Animator animator;
 
+    [SerializeField] private Transform enemyBodyTarget;
+    [SerializeField] Animator animator;
 
     [Header("Targeting")]
     private AIPath path;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float stopDistanceThreshlod;
-    private float distanceToTarget;
     [SerializeField] float myRange = 12;
+
+    [SerializeField] SpriteGroupAlphaOnDeath mySprites;
 
     private Transform target;
     private bool playerInRange;
     private EneemyAttack enemyAttack;
-
     private Health myHealth;
-    [SerializeField] SpriteGroupAlphaOnDeath mySprites;
+    private float distanceToTarget;
     private bool AIActive = true;
-
-    private Rigidbody2D rb;
-
 
     private void Awake() 
     {
         myHealth = GetComponent<Health>();
         enemyAttack = GetComponent<EneemyAttack>();
-        rb = GetComponent<Rigidbody2D>();
         AIActive = true;
     }
 
@@ -52,10 +48,9 @@ public class EnemyController : MonoBehaviour
 
     private void Update() 
     {
-        if (!AIActive)
-            return;
+        if (!AIActive) return;
+
         distanceToTarget  = Vector2.Distance(transform.position, target.position);
-        // Vector3 direction = (target.position - transform.position).normalized;
         if (distanceToTarget < myRange)
         {
             playerInRange = true;
@@ -67,23 +62,16 @@ public class EnemyController : MonoBehaviour
 
         if (target && playerInRange)
         {
-            
-            // Debug.Log(distanceToTarget);
-
             if (distanceToTarget < stopDistanceThreshlod)
             {
-                // rb.velocity = Vector3.zero;
                 path.destination = transform.position;
                 animator.SetBool("isMoving", false);
-                // Debug.Log("Stop");
                 enemyAttack.Attack();
             }
             else
             {
-                // rb.MovePosition(transform.position + direction * moveSpeed * Time.fixedDeltaTime);
                 path.destination = target.position;
                 animator.SetBool("isMoving", true);
-                // Debug.Log("Follow");
             }
         }
         else
@@ -93,33 +81,10 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // private void OnTriggerStay2D(Collider2D other) 
-    // {
-    //     if (!AIActive)
-    //         return;
-    //     if (other.tag == "Player")
-    //     {
-    //         target = other.transform;
-    //         playerInRange = true;
-
-    //     }
-    // }
-    // private void OnTriggerExit2D(Collider2D other) 
-    // {
-    //     if (!AIActive)
-    //         return;
-    //     if (other.tag == "Player")
-    //     {
-    //         target = null;
-    //         playerInRange = false;
-    //     }
-    // }
-
     public void ActivateSelector()
     {
         Selector.SetActive(true);
     }
-
     public void DeactivateSelector()
     {
         Selector.SetActive(false);
@@ -133,8 +98,6 @@ public class EnemyController : MonoBehaviour
     private void Death()
     {
         AIActive = false;
-        
-        rb.velocity = Vector3.zero;
         path.StopAllCoroutines();
         path.destination = transform.position;
         mySprites.StartFade(0, 1);

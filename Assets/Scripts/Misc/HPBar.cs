@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +7,6 @@ public class HPBar : MonoBehaviour
     [SerializeField] private Health health;
     [SerializeField] TextMeshProUGUI hpText;
     private Slider healthsBar;
-
 
     private void Awake() 
     {

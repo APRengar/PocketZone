@@ -58,7 +58,6 @@ public class PlayerItemSlots : MonoBehaviour
             return;
         }
         PlayerSlots[bodyPart].sprite = null;
-        // Debug.Log("Unequiped "+ bodyPart);
     }
 
     public void UnequipAllItems()
@@ -68,5 +67,4 @@ public class PlayerItemSlots : MonoBehaviour
             armor.sprite = null;
         } 
     }
-
 }

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance { get; private set; }
 
-    [SerializeField] private GameObject pauseMenuUI; // Assign your Pause Menu UI GameObject in the Inspector.
+    [SerializeField] private GameObject pauseMenuUI;
 
     private bool isPaused = false;
 
@@ -26,16 +24,15 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
 
         if (pauseMenuUI != null)
+        {
             pauseMenuUI.SetActive(false);
+        }
     }
 
     public void TogglePause()
     {
-        // Toggle pause with the Escape key
-        if (isPaused)
-            ResumeGame();
-        else
-            PauseGame();
+        if (isPaused) ResumeGame();
+        else PauseGame();
     }
 
 
@@ -43,26 +40,26 @@ public class PauseManager : MonoBehaviour
     {
         if (isPaused) return;
 
-        Time.timeScale = 0f; // Freeze game time
+        Time.timeScale = 0f;
         isPaused = true;
 
         if (pauseMenuUI != null)
+        {
             pauseMenuUI.SetActive(true);
-
-        Debug.Log("Game Paused");
+        }
     }
 
     public void ResumeGame()
     {
         if (!isPaused) return;
 
-        Time.timeScale = 1f; // Resume game time
+        Time.timeScale = 1f;
         isPaused = false;
 
         if (pauseMenuUI != null)
+        {
             pauseMenuUI.SetActive(false);
-
-        Debug.Log("Game Resumed");
+        }
     }
 
     public bool IsGamePaused()

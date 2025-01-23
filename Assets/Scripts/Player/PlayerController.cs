@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f; // Скорость движения
+    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float yMovementMultiplier = 0.5f; // Коэффициент скорости для оси Y, что бы визуально создавался эффект глубины по Y
     [SerializeField] private Animator animator;
     private WeaponController weaponControler;

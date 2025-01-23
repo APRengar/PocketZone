@@ -12,8 +12,7 @@ public class EneemyAttack : MonoBehaviour
     public void Attack()
     {
         // Prevent overlapping attacks
-        if (isAttacking)
-            return;
+        if (isAttacking) return;
 
         // Safety check for the player instance
         if (Player.Instance == null)
@@ -21,7 +20,6 @@ public class EneemyAttack : MonoBehaviour
             Debug.LogWarning("Player instance is null. Cannot perform attack.");
             return;
         }
-
         // Check if the player has a Health component
         Health playerHealth = Player.Instance.GetComponent<Health>();
         if (playerHealth == null)
@@ -29,7 +27,6 @@ public class EneemyAttack : MonoBehaviour
             Debug.LogWarning("Player does not have a Health component. Cannot perform attack.");
             return;
         }
-
         // Check if the animator is assigned
         if (animator == null)
         {
@@ -44,16 +41,9 @@ public class EneemyAttack : MonoBehaviour
     private IEnumerator AttackCoro(Health playerHealth)
     {
         isAttacking = true;
-
-        // Trigger the attack animation
         animator.SetTrigger("Attack");
-
-        // Inflict damage on the player
         playerHealth.TakeDamage(damage);
-
-        // Wait for the specified interval before allowing the next attack
         yield return new WaitForSeconds(attackIntervals);
-
         isAttacking = false;
     }
 }

@@ -17,35 +17,25 @@ public class InventorySlot : MonoBehaviour
 
     public void EquipItem()
     {
-        if (!slotItemHolder)
-            return;
-        if (!slotItemHolder.GetInventoryPrefab().GetComponent<InventoryItem>())
-            return;
+        if (!slotItemHolder) return;
+        if (!slotItemHolder.GetInventoryPrefab().GetComponent<InventoryItem>()) return;
         
-        if (equiped)
-        {
-            Unequip();
-        }
-        else
-        {
-            Equip();
-        }
+        if (equiped) Unequip();
+        else  Equip();
     }
 
     private void Equip()
     {
-        
         InventoryItem slotItem = slotItemHolder.GetInventoryPrefab().GetComponent<InventoryItem>();
         if (!slotItem)
         {
-            Debug.Log("This is ton eqipable");
+            Debug.Log("This is not eqipable");
             return;
         }
         int bodyPartToEqip = slotItem.BodyPart;
         int pieceToEqip = slotItem.ArmorPiece;
         equiped = true;
         Player.Instance.GetComponent<PlayerItemSlots>().EquipItem(bodyPartToEqip, pieceToEqip);
-
     }
 
     private void Unequip()
@@ -53,7 +43,7 @@ public class InventorySlot : MonoBehaviour
         InventoryItem slotItem = slotItemHolder.GetInventoryPrefab().GetComponent<InventoryItem>();
         if (!slotItem)
         {
-            Debug.Log("This is ton eqipable");
+            Debug.Log("This is not eqipable");
             return;
         }
         int bodyPartToEqip = slotItem.BodyPart;

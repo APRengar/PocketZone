@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
@@ -36,7 +34,7 @@ public class WeaponRange : MonoBehaviour
 
     private void Update()
     {
-        DrawCircle(); // Update the circle to account for changes in collider radius or position
+        DrawCircle();
     }
 
     private void DrawCircle()

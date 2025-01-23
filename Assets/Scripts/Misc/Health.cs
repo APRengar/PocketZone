@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -21,8 +19,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (dead)
-            return;
+        if (dead) return;
 
         currentHealth -= damage;
         OnDamageTaken?.Invoke(damage);

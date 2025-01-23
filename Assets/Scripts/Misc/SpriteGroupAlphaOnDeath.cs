@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteGroupAlphaOnDeath : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)] private float alpha = 1f; // Centralized alpha controller
+    [SerializeField, Range(0f, 1f)] private float alpha = 1f; 
 
-    // Update alpha for all child SpriteRenderers
     private void SetAlpha(float value)
     {
         foreach (var spriteRenderer in GetComponentsInChildren<SpriteRenderer>())
@@ -23,7 +21,7 @@ public class SpriteGroupAlphaOnDeath : MonoBehaviour
 
     private IEnumerator FadeTo(float targetAlpha, float duration)
     {
-        float startAlpha = alpha; // Current alpha value
+        float startAlpha = alpha; 
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
@@ -34,7 +32,6 @@ public class SpriteGroupAlphaOnDeath : MonoBehaviour
             yield return null;
         }
 
-        alpha = targetAlpha; // Ensure it ends at the exact target value
-
+        alpha = targetAlpha;
     }
 }
